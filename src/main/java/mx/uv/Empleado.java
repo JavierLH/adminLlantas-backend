@@ -16,9 +16,9 @@ public class Empleado {
     public Empleado(){
 
     }
-    public Empleado(Integer idEmpleado,String estatus){
+    public Empleado(Integer idEmpleado){
         this.idEmpleado=idEmpleado;
-        this.estatus = estatus;
+        
     }
     public Empleado(Integer idEmpleado, String nombre, String password, String idRol){
         this.idEmpleado=idEmpleado;

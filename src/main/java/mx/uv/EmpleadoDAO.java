@@ -150,7 +150,7 @@ public class EmpleadoDAO {
     }
     
     
-    public static String eliminaEmpleado(Empleado u) {
+    public static String eliminaEmpleado(Integer id) {
         PreparedStatement stm = null;
         //UPDATE `ejemplo80640`.`usuario` SET `id` = '4', `username` = 'alexis', `password` = '123456' WHERE (`id` = '3');
         Connection cc = null;
@@ -159,7 +159,7 @@ public class EmpleadoDAO {
         try {
             String sql = "DELETE FROM adminllantas.usuario WHERE (ID = ?);";
             stm = (PreparedStatement) cc.prepareStatement(sql);
-            stm.setInt(1, u.getIdEmpleado());
+            //stm.setInt(1, u.getIdEmpleado());
             
             if (stm.executeUpdate() > 0)
                 msj = "Datos del empleado eliminados correctamente";
@@ -234,5 +234,10 @@ public class EmpleadoDAO {
         }    
         return false;   
     }
+
+
+   
+
+    
 
 }
