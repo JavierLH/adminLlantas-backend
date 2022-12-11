@@ -67,7 +67,7 @@ public class ProveedorDAO {
 
         cc = c.getConnection();
         try {
-            String sql = "INSERT INTO adminLlantas.provedor (nombreEmpresa, categoria, estatus) VALUES (?,?,?)";
+            String sql = "INSERT INTO provedor (nombreEmpresa, categoria, estatus) VALUES (?,?,?)";
             stm = (PreparedStatement) cc.prepareStatement(sql);
             stm.setString(1, u.getNombreEmpresa());
             stm.setString(2, u.getCategoria());

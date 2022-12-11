@@ -49,6 +49,13 @@ public class App
             return EmpleadoDAO.actualizaEmpleado(u);
         });
 
+        post("/actualizaProveedor", (req, res) -> {
+            String datosFormulario = req.body();
+            Proveedor u = gson.fromJson(datosFormulario, Proveedor.class);
+            return ProveedorDAO.actualizaProveedor(u);
+        });
+
+
         post("/elimina" ,(req,res)-> {
             String datosFormulario = req.body();
             Empleado u = gson.fromJson(datosFormulario, Empleado.class);
