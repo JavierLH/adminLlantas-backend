@@ -29,11 +29,18 @@ public class App
         before((req, res) -> res.type("application/json"));
         
         get("/empleados", (req, res) -> gson.toJson(EmpleadoDAO.dameEmpleados()));
+        get("/proveedores", (req, res) -> gson.toJson(ProveedorDAO.dameProveedores()));
 
         post("/", (req, res) -> {
             String datosFormulario = req.body();
             Empleado u = gson.fromJson(datosFormulario, Empleado.class);
             return EmpleadoDAO.crearEmpleado(u);
+        });
+
+        post("/crearProveedor", (req, res) -> {
+            String datosFormulario = req.body();
+            Proveedor u = gson.fromJson(datosFormulario, Proveedor.class);
+            return ProveedorDAO.crearProveedor(u);
         });
 
         post("/actualiza", (req, res) -> {
