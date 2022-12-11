@@ -52,8 +52,10 @@ public class App
         post("/elimina" ,(req,res)-> {
             String datosFormulario = req.body();
             Empleado u = gson.fromJson(datosFormulario, Empleado.class);
-            String resultado = EmpleadoDAO.eliminaEmpleado(u);
-            return resultado;
+            //System.out.println(u.getIdEmpleado());
+            
+            return EmpleadoDAO.eliminaEmpleado(u.getIdEmpleado());
+
         });
 
         post("/login", (req, res) -> {
