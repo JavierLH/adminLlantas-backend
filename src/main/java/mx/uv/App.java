@@ -11,6 +11,7 @@ public class App
 {
     public static Gson gson = new Gson();
     public static void main( String[] args ){
+        Empleado empleado = new Empleado();
         port(getHerokuAssignedPort());
         options("/*", (request, response) -> {
             String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
@@ -46,6 +47,19 @@ public class App
             Empleado u = gson.fromJson(datosFormulario, Empleado.class);
             return EmpleadoDAO.eliminaEmpleado(u);
         });
+
+        post("/login", (req, res) -> {
+            String datosFormulario = req.body();
+            Empleado u=gson.fromJson(datosFormulario, Empleado.class);
+            if (EmpleadoDAO.iniciarSesion(u)==true ){
+                
+                empleado.setNombre(u.getNombre());
+                empleado.setPassword(u.getPassword());
+                return true;
+            }else{
+                return false;
+            }
+        });
         
     }
     private static int getHerokuAssignedPort() {
@@ -55,4 +69,6 @@ public class App
             }
         return 4567;
     }
+
+
 }

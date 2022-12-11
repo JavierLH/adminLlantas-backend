@@ -185,4 +185,54 @@ public class EmpleadoDAO {
         }
         return msj;
     }
+
+
+    public static boolean iniciarSesion(Empleado u) {
+        Statement stm=null;
+        ResultSet rs = null;
+        Connection cc =null;
+
+        cc = c.getConnection();
+        try {
+            String sql = "SELECT COUNT(ID) as i FROM usuario where nombre= '"+u.getNombre()+"' and password="+u.getPassword()+";";
+            stm = (Statement) cc.createStatement();
+            rs = ((java.sql.Statement) stm).executeQuery(sql);
+            
+            while (rs.next()) {
+                if(rs.getString("i").equals("1")){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e +"1");
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException sqlEx) {
+                    sqlEx.printStackTrace();
+                }
+                rs = null;
+            }
+
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException sqlEx) {
+                    sqlEx.printStackTrace();
+                }
+                stm = null;
+            }
+            try {
+                cc.close();
+                System.out.println("Closed  connection!");
+            } catch (SQLException sqlEx) {
+                sqlEx.printStackTrace();
+            }
+        }    
+        return false;   
+    }
+
 }
