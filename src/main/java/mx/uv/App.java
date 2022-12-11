@@ -42,10 +42,11 @@ public class App
             return EmpleadoDAO.actualizaEmpleado(u);
         });
 
-        delete("/elimina", (req, res) -> {
+        post("/elimina" ,(req,res)-> {
             String datosFormulario = req.body();
             Empleado u = gson.fromJson(datosFormulario, Empleado.class);
-            return EmpleadoDAO.eliminaEmpleado(u);
+            String resultado = EmpleadoDAO.eliminaEmpleado(u);
+            return resultado;
         });
 
         post("/login", (req, res) -> {

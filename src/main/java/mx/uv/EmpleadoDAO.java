@@ -157,7 +157,7 @@ public class EmpleadoDAO {
         String msj = "";
         cc = c.getConnection();
         try {
-            String sql = "DELETE FROM usuario WHERE (ID = ?)";
+            String sql = "DELETE FROM adminllantas.usuario WHERE (ID = ?);";
             stm = (PreparedStatement) cc.prepareStatement(sql);
             stm.setInt(1, u.getIdEmpleado());
             
