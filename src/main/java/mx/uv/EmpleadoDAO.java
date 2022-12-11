@@ -16,7 +16,6 @@ public class EmpleadoDAO {
         ResultSet rs = null;
         List<Empleado> resultado = new ArrayList<>();
         Connection cc = null;
-        // falto conectarme
         cc = c.getConnection();
         try {
             String sql = "SELECT * FROM usuario WHERE idRol =1 AND estatus =1";
@@ -63,7 +62,6 @@ public class EmpleadoDAO {
 
     public static String actualizaEmpleado(Empleado u) {
         PreparedStatement stm = null;
-        //UPDATE `ejemplo80640`.`usuario` SET `id` = '4', `username` = 'alexis', `password` = '123456' WHERE (`id` = '3');
         Connection cc = null;
         String msj = "";
         cc = c.getConnection();
@@ -78,7 +76,6 @@ public class EmpleadoDAO {
             stm.setString(6, u.getTelefono());
             stm.setString(7, u.getPassword());
             stm.setString(8, u.getEstatus());
-            //stm.setString(9, u.getEstatus());
         
             if (stm.executeUpdate() > 0)
                 msj = "Datos del empleado modificados correctamente";
