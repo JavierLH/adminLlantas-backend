@@ -20,7 +20,7 @@ public class ProveedorDAO {
         // falto conectarme
         cc = c.getConnection();
         try {
-            String sql = "select * from adminLlantas.provedor";
+            String sql = "select * from provedor";
             stm = (Statement) cc.createStatement();
             rs = stm.executeQuery(sql);
             while (rs.next()) {
