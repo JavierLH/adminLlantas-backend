@@ -69,13 +69,13 @@ public class App
         });
 
 
-        post("/elimina" ,(req,res)-> {
+        post("/elimina", (req, res) -> {
             String datosFormulario = req.body();
             Empleado u = gson.fromJson(datosFormulario, Empleado.class);
-            //System.out.println(u.getIdEmpleado());
-            
-            return EmpleadoDAO.eliminaEmpleado(u.getIdEmpleado());
-
+            JsonObject objetoJson = new JsonObject();
+            //System.out.println(u.getIdEmpleado()
+            objetoJson.addProperty("id",EmpleadoDAO.eliminaEmpleado(u.getIdEmpleado()));
+            return objetoJson;
         });
 
         post("/login", (req, res) -> {

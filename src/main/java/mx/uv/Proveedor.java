@@ -13,7 +13,7 @@ public class Proveedor {
         this.idProvedor = idProvedor; 
         this.nombreEmpresa = nombreEmpresa;
         this.categoria = categoria;
-        this.estatus = estatus; 
+        this.estatus = estatus;
     }
 
     public Integer getIdProvedor() {
