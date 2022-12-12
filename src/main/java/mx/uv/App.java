@@ -30,6 +30,7 @@ public class App
         
         get("/empleados", (req, res) -> gson.toJson(EmpleadoDAO.dameEmpleados()));
         get("/proveedores", (req, res) -> gson.toJson(ProveedorDAO.dameProveedores()));
+        get("/sucursales", (req, res) -> gson.toJson(SucursalDAO.dameSucursal()));
 
         post("/", (req, res) -> {
             String datosFormulario = req.body();
@@ -43,6 +44,12 @@ public class App
             return ProveedorDAO.crearProveedor(u);
         });
 
+        post("/crearSucursal", (req, res) -> {
+            String datosFormulario = req.body();
+            Sucursal u = gson.fromJson(datosFormulario, Sucursal.class);
+            return SucursalDAO.crearSucursal(u);
+        });
+
         post("/actualiza", (req, res) -> {
             String datosFormulario = req.body();
             Empleado u = gson.fromJson(datosFormulario, Empleado.class);
@@ -53,6 +60,12 @@ public class App
             String datosFormulario = req.body();
             Proveedor u = gson.fromJson(datosFormulario, Proveedor.class);
             return ProveedorDAO.actualizaProveedor(u);
+        });
+
+        post("/actualizaSucursal", (req, res) -> {
+            String datosFormulario = req.body();
+            Sucursal u = gson.fromJson(datosFormulario, Sucursal.class);
+            return SucursalDAO.actualizaSucursal(u);
         });
 
 
